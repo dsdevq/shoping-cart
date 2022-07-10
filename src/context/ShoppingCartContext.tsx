@@ -40,21 +40,27 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   const openCart = () => setIsOpen(true)
   const closeCart = () => setIsOpen(false)
 
+  // is item ==> item.id === id, then return item.quantity, or 0
   const getItemQuantity = (id: number) => {
     return cartItems.find(item => item.id === id)?.quantity || 0
   }
 
   const increaseCartQuantity = (id: number) => {
     setCartItems(currItems => {
+      // If we dont have this item in array
       if (currItems.find(item => item.id === id) == null) {
+        // Then we need to add it
         return [...currItems, { id, quantity: 1 }]
       }
       else {
+        // If item exists
         return currItems.map((item) => {
           if (item.id === id) {
+            // Return old item, but increment quantity
             return { ...item, quantity: item.quantity + 1 }
           }
           else {
+            // or just return item
             return item
           }
         })
@@ -64,15 +70,20 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
 
   const decreaseCartQuantity = (id: number) => {
     setCartItems(currItems => {
+      // If item quantity is just 1
       if (currItems.find(item => item.id === id)?.quantity === 1) {
+        // Then remove this item by using filter
         return currItems.filter((item) => item.id !== id)
       }
       else {
+        // Or if its > 1
         return currItems.map((item) => {
           if (item.id === id) {
+            // Return old item, but decrement quantity
             return { ...item, quantity: item.quantity - 1 }
           }
           else {
+            // or just return item
             return item
           }
         })

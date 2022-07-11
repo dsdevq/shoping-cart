@@ -16,6 +16,7 @@ type ShoppingCartContext = {
   cartItems: CartItem[]
 }
 
+
 type CartItem = {
   id: number,
   quantity: number

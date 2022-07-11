@@ -2,6 +2,7 @@ import React from 'react'
 import { Button, Card } from 'react-bootstrap'
 import { useShoppingCart } from '../context/ShoppingCartContext'
 import { formatCurrency } from '../utilities/formatCurrency'
+import images from '../data/imgs/car.jpg'
 
 type StoreItemProps = {
   id: number,
@@ -22,7 +23,7 @@ export default function StoreItem({ id, name, price, imgUrl }: StoreItemProps) {
     <Card className='h-100'>
       <Card.Img
         variant="top"
-        src={imgUrl}
+        src={images}
         height="200px"
         style={{
           objectFit: 'cover'

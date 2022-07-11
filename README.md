@@ -1,3 +1,3 @@
-# shoping-cart
+# shopping-cart
 
 WebDevSimplified guide
